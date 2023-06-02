@@ -33,7 +33,7 @@ class ImmobiliareApi:
         
     def single_page_call(self, page_number):
         
-        assert (int(page_number)>0) & (int(page_number)<81)
+        assert(int(page_number)>0) & (int(page_number)<81), 'Cannot crawl page number bigger than 80'
 
         page_number = str(page_number)
         
@@ -57,21 +57,20 @@ class ImmobiliareApi:
         return data
     
     def write_to_folder(self):
-        pass
+        
+        self.single_page_call(page_number=i)
     
     def call_report(self):
         
         tmp_call = self.single_page_call(page_number=1)
-        # print( tmp_call)
-        print(
-            '\n# API Call Report', \
-            '\n\n## Parameters', \
-            '\nprovince :' , self.province, \
-            '\nminimum_price :' , self.minimum_price, \
-            '\nmaximum_price :' , self.maximum_price, \
-            '\ncontract_type :' , self.contract_type, \
-            '\nadvert_type : ', self.advert_type, \
-            '\n\n## Statistics', \
-            '\nTotal ads :', tmp_call['totalAds'], \
-            '\nMax pages :', tmp_call['maxPages'], \
-        )
+        
+        report = {
+            'province':  self.province, \
+            'minimum_price':  self.minimum_price, \
+            'maximum_price':  self.maximum_price, \
+            'contract_type':  self.contract_type, \
+            'advert_type': self.advert_type, \
+            'total_ads': tmp_call['totalAds'], \
+            'max_pages': tmp_call['maxPages']
+            }
+        return report
