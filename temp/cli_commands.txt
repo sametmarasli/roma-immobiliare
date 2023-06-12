@@ -1,0 +1,4 @@
+prefect profile use 'pre-cloud' # change the profile
+prefect orion start # start local prefect server
+prefect agent start -q main # start the local deployment agent
+europe-west8-docker.pkg.dev/zoomcamp-385810/prefect-flows-docker
