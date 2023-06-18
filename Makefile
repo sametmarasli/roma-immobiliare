@@ -43,11 +43,11 @@ create_docker_repo_on_gcp:
 
 setup_instructions_for_artifact_registery:
 	gcloud auth configure-docker \
-    europe-west8-docker.pkg.dev\
+    europe-west8-docker.pkg.dev
 
 build_and_push_docker_image_to_artifact_registery:
-	docker image build -t europe-west8-docker.pkg.dev/zoomcamp-385810/prefect-flows-docker/prefect:roma .
-	docker image push europe-west8-docker.pkg.dev/zoomcamp-385810/prefect-flows-docker/prefect:roma
+	docker image build -t ${ARTIFACT_REGISTRY_PATH}/prefect:roma .
+	docker image push ${ARTIFACT_REGISTRY_PATH}/prefect:roma
 
 clean:
 	rm data/*
