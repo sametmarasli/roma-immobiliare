@@ -27,7 +27,7 @@ def ingest_data(model: Model):
 @task(log_prints=True)
 def write_gcs(ingestion_directory: Path) -> None:
     """Upload local parquet file to GCS"""
-    gcs_block = GcsBucket.load("roma-gcs")
+    gcs_block = GcsBucket.load("roma-filesystem-gcs")
     gcs_block.upload_from_folder(from_folder=ingestion_directory, to_folder=ingestion_directory)
     return
 

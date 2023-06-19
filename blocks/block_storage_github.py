@@ -6,7 +6,8 @@ load_dotenv()
 REPOSITORY = os.getenv('REPOSITORY')
 
 block = GitHub(
-    repository=REPOSITORY
+    repository=REPOSITORY,
+    include_git_objects=False,
 )
 
 block.save("roma-storage-github", overwrite=True)

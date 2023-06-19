@@ -7,7 +7,7 @@ ARTIFACT_REGISTRY_PATH = os.getenv('ARTIFACT_REGISTRY_PATH')
 
 # alternative to creating DockerContainer block in the UI
 docker_block = DockerContainer(
-    image=f"{ARTIFACT_REGISTRY_PATH}/prefect:roma",  # insert your image here
+    image=f"{ARTIFACT_REGISTRY_PATH}/prefect:prova",  # insert your image here
     image_pull_policy="ALWAYS",
     auto_remove=True,
 )
