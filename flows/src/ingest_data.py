@@ -18,11 +18,11 @@ class IngestData:
     def __init__(self,
                 minimum_price,
                 maximum_price,
-                ingestion_directory,
+                ingestion_directory='./data',
                 increment = 2500,
             ):
         
-        assert Path(ingestion_directory).is_dir(), "Ingestion directory does not exist. Please enter a valid directory"
+        # assert Path(ingestion_directory).is_dir(), "Ingestion directory does not exist. Please enter a valid directory"
 
         self.minimum_price = int(minimum_price)
         self.maximum_price = int(maximum_price)
