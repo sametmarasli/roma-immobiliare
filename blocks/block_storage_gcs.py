@@ -1,7 +1,3 @@
-'''
-Provide a filesystem to store the source code
-'''
-
 from prefect.filesystems import GCS
 from dotenv import load_dotenv
 import os
@@ -9,8 +5,10 @@ import os
 load_dotenv()
 BUCKET_NAME = os.getenv('BUCKET_NAME')
 PROJECT_ID = os.getenv('PROJECT_ID')
+PROJECT_ID = os.getenv('PROJECT_ID')
+GCP_SERVICE_ACCOUNT_PATH = os.getenv('GCP_SERVICE_ACCOUNT_PATH')
 
-with open("service_account.json") as f:
+with open(GCP_SERVICE_ACCOUNT_PATH) as f:
     service_account = f.read()
 
 block = GCS(
@@ -19,4 +17,4 @@ block = GCS(
     project=PROJECT_ID
 )
 
-block.save("dev", overwrite=True)
+block.save("roma-storage-gcs", overwrite=True)

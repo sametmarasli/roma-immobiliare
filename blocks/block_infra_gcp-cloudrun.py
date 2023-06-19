@@ -7,9 +7,8 @@ load_dotenv()
 PROJECT_ID = os.getenv('PROJECT_ID')
 REGION = os.getenv('REGION')
 DOCKER_IMAGE_NAME = os.getenv('DOCKER_IMAGE_NAME')
-print(DOCKER_IMAGE_NAME)
 
-credentials = GcpCredentials.load("roma-gcp-credentials")
+credentials = GcpCredentials.load("roma-credentials-gcp")
 
 block = CloudRunJob(
     credentials=credentials,
@@ -18,4 +17,4 @@ block = CloudRunJob(
     region=REGION
 )
 
-block.save("roma-cloud-run")
+block.save("roma-infra-cloudrun", overwrite=True)

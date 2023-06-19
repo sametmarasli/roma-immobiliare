@@ -4,9 +4,9 @@ import os
 
 load_dotenv()
 PROJECT_ID = os.getenv('PROJECT_ID')
-SERVICE_ACCOUNT = os.getenv('SERVICE_ACCOUNT')
+GCP_SERVICE_ACCOUNT_PATH = os.getenv('GCP_SERVICE_ACCOUNT_PATH')
 
-with open(SERVICE_ACCOUNT) as f:
+with open(GCP_SERVICE_ACCOUNT_PATH) as f:
     service_account = f.read()
 
 block = GcpCredentials(
@@ -14,4 +14,4 @@ block = GcpCredentials(
     project=PROJECT_ID
 )
 
-block.save("roma-gcp-credentials", overwrite=True)
+block.save("roma-credentials-gcp", overwrite=True)

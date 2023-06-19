@@ -1,6 +1,8 @@
 *.pyc
 .DS_Store
 .vscode 
+terraform
+.python-version
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

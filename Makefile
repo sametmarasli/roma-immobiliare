@@ -51,3 +51,6 @@ build_and_push_docker_image_to_artifact_registery:
 
 clean:
 	rm data/*
+
+setup_prefect_blocks:
+	sh ./setup_prefect_blocks.sh

@@ -12,4 +12,4 @@ docker_block = DockerContainer(
     auto_remove=True,
 )
 
-docker_block.save("roma-docker", overwrite=True)
+docker_block.save("roma-infra-docker", overwrite=True)
