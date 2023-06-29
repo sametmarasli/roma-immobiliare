@@ -5,8 +5,9 @@ We scrape the data from from immobiliare.it.
 The project is still under development (18-Jun-2023).
 
 todo:
-- [ ] set github as code storage for prefect
-- [ ] reorganize the repo for a valid structure for Prefect
+- [x] set github as code storage for prefect
+- [x] reorganize the repo for a valid structure for Prefect
+- [ ] setup datamodels for handling api calls and pagination
 - [ ] move all the infra code to terraform
 - [ ] setup CI/CD
 - [ ] setup piperider for profiling
