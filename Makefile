@@ -40,6 +40,9 @@ create_docker_repo_on_gcp:
 	--location=${REGION} \
 	--description="Docker repository for Prefect Flows"
 
+docker_build_push_images:
+	docker image build -t ${DOCKER_IMAGE_NAME} .
+	docker image push -t ${DOCKER_IMAGE_NAME} 
 
 setup_instructions_for_artifact_registery:
 	gcloud auth configure-docker \

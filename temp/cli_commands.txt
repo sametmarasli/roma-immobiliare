@@ -6,3 +6,29 @@ europe-west8-docker.pkg.dev/zoomcamp-385810/prefect-flows-docker
 
 docker image build -t $ARTIFACT_REGISTRY_PATH/prefect:prova .
 docker image push $ARTIFACT_REGISTRY_PATH/prefect:prova
+
+
+# Create the service account
+gcloud iam service-accounts create terraform \
+  --description="Service Account to use with Terraform"
+
+
+# Set the correct project variable
+gcloud config set project $PROJECT_ID
+
+# Create the service account
+gcloud iam service-accounts create terraform \
+  --description="Service Account to use with Terraform"
+
+# Create the key file
+gcloud iam service-accounts keys create tf_service_account.json \
+  --iam-account=terraform@$PROJECT_ID.iam.gserviceaccount.com
+
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+  --member=serviceAccount:terraform@$PROJECT_ID.iam.gserviceaccount.com \
+  --role=roles/editor
+
+  # Grant the Security Admin role
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+  --member=serviceAccount:terraform@$PROJECT_ID.iam.gserviceaccount.com \
+  --role=roles/iam.securityAdmin
