@@ -5,13 +5,12 @@ We scrape the data from from immobiliare.it.
 The project is still under development (18-Jun-2023).
 
 todo:
+- [x] set github as code storage for prefect
 - [x] reorganize the repo for a valid structure for Prefect
-- [x] setup datamodels for handling api calls and pagination
-- [x] add unit tests 
-- [ ] setup Prefect 
-- [ ] set github as code storage for prefect
-- [ ] setup CI/CD
-- [ ] setup piperider (or another tool) for profiling
-- [ ] setup dbt to transform data by using Bigquery
-- [ ] setup Data Studio studio for dashboard
+- [ ] setup datamodels for handling api calls and pagination
 - [ ] move all the infra code to terraform
+- [ ] setup CI/CD
+- [ ] setup piperider for profiling
+- [ ] add tests
+- [ ] setup dbt to transform data by using Bigquery
+- [ ] use Looker studio for dashboard

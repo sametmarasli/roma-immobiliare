@@ -1,0 +1,352 @@
+[
+    {
+      "name": "seo",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "fields": [
+        {
+          "name": "url",
+          "type": "STRING",
+          "mode": "NULLABLE"
+        },
+        {
+          "name": "metaTitle",
+          "type": "STRING",
+          "mode": "NULLABLE"
+        },
+        {
+          "name": "title",
+          "type": "STRING",
+          "mode": "NULLABLE"
+        },
+        {
+          "name": "anchor",
+          "type": "STRING",
+          "mode": "NULLABLE"
+        }
+      ]
+    },
+    {
+      "name": "realEstate",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "fields": [
+        {
+          "name": "visibility",
+          "type": "STRING",
+          "mode": "NULLABLE"
+        },
+        {
+          "name": "isProjectLike",
+          "type": "STRING",
+          "mode": "NULLABLE"
+        },
+        {
+          "name": "hasMainProperty",
+          "type": "STRING",
+          "mode": "NULLABLE"
+        },
+        {
+          "name": "isNew",
+          "type": "STRING",
+          "mode": "NULLABLE"
+        },
+        {
+          "name": "properties",
+          "type": "RECORD",
+          "mode": "REPEATED",
+          "fields": [
+            {
+              "name": "bathrooms",
+              "type": "STRING",
+              "mode": "NULLABLE"
+            },
+            {
+              "name": "caption",
+              "type": "STRING",
+              "mode": "NULLABLE"
+            },
+            {
+              "name": "floors",
+              "type": "STRING",
+              "mode": "NULLABLE"
+            },
+            {
+              "name": "condition",
+              "type": "STRING",
+              "mode": "NULLABLE"
+            },
+            {
+              "name": "ga4features",
+              "type": "STRING",
+              "mode": "REPEATED"
+            },
+            {
+              "name": "ga4Bathrooms",
+              "type": "STRING",
+              "mode": "NULLABLE"
+            },
+            {
+              "name": "typologyGA4Translation",
+              "type": "STRING",
+              "mode": "NULLABLE"
+            },
+            {
+              "name": "bedRoomsNumber",
+              "type": "STRING",
+              "mode": "NULLABLE"
+            },
+            {
+              "name": "multimedia",
+              "type": "RECORD",
+              "mode": "NULLABLE",
+              "fields": [
+                {
+                  "name": "photos",
+                  "type": "RECORD",
+                  "mode": "REPEATED",
+                  "fields": [
+                    {
+                      "name": "urls",
+                      "type": "RECORD",
+                      "mode": "NULLABLE",
+                      "fields": [
+                        {
+                          "name": "small",
+                          "type": "STRING",
+                          "mode": "NULLABLE"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "caption",
+                      "type": "STRING",
+                      "mode": "NULLABLE"
+                    },
+                    {
+                      "name": "id",
+                      "type": "INTEGER",
+                      "mode": "NULLABLE"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "surfaceValue",
+              "type": "STRING",
+              "mode": "NULLABLE"
+            },
+            {
+              "name": "surface",
+              "type": "STRING",
+              "mode": "NULLABLE"
+            },
+            {
+              "name": "location",
+              "type": "RECORD",
+              "mode": "NULLABLE",
+              "fields": [
+                {
+                  "name": "latitude",
+                  "type": "FLOAT",
+                  "mode": "NULLABLE"
+                },
+                {
+                  "name": "macrozone",
+                  "type": "STRING",
+                  "mode": "NULLABLE"
+                },
+                {
+                  "name": "region",
+                  "type": "STRING",
+                  "mode": "NULLABLE"
+                },
+                {
+                  "name": "province",
+                  "type": "STRING",
+                  "mode": "NULLABLE"
+                },
+                {
+                  "name": "longitude",
+                  "type": "FLOAT",
+                  "mode": "NULLABLE"
+                },
+                {
+                  "name": "city",
+                  "type": "STRING",
+                  "mode": "NULLABLE"
+                },
+                {
+                  "name": "microzone",
+                  "type": "STRING",
+                  "mode": "NULLABLE"
+                }
+              ]
+            },
+            {
+              "name": "hasElevators",
+              "type": "STRING",
+              "mode": "NULLABLE"
+            },
+            {
+              "name": "rooms",
+              "type": "STRING",
+              "mode": "NULLABLE"
+            },
+            {
+              "name": "income",
+              "type": "STRING",
+              "mode": "NULLABLE"
+            },
+            {
+              "name": "features",
+              "type": "STRING",
+              "mode": "REPEATED"
+            },
+            {
+              "name": "description",
+              "type": "STRING",
+              "mode": "NULLABLE"
+            },
+            {
+              "name": "ga4Condition",
+              "type": "STRING",
+              "mode": "NULLABLE"
+            },
+            {
+              "name": "category",
+              "type": "RECORD",
+              "mode": "NULLABLE",
+              "fields": [
+                {
+                  "name": "id",
+                  "type": "INTEGER",
+                  "mode": "NULLABLE"
+                },
+                {
+                  "name": "name",
+                  "type": "STRING",
+                  "mode": "NULLABLE"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "typology",
+          "type": "RECORD",
+          "mode": "NULLABLE",
+          "fields": [
+            {
+              "name": "id",
+              "type": "INTEGER",
+              "mode": "NULLABLE"
+            },
+            {
+              "name": "name",
+              "type": "STRING",
+              "mode": "NULLABLE"
+            }
+          ]
+        },
+        {
+          "name": "price",
+          "type": "RECORD",
+          "mode": "NULLABLE",
+          "fields": [
+            {
+              "name": "priceRange",
+              "type": "STRING",
+              "mode": "NULLABLE"
+            },
+            {
+              "name": "value",
+              "type": "FLOAT64",
+              "mode": "NULLABLE"
+            },
+            {
+              "name": "formattedValue",
+              "type": "STRING",
+              "mode": "NULLABLE"
+            },
+            {
+              "name": "visible",
+              "type": "STRING",
+              "mode": "NULLABLE"
+            }
+          ]
+        },
+        {
+          "name": "type",
+          "type": "STRING",
+          "mode": "NULLABLE"
+        },
+        {
+          "name": "title",
+          "type": "STRING",
+          "mode": "NULLABLE"
+        },
+        {
+          "name": "luxury",
+          "type": "STRING",
+          "mode": "NULLABLE"
+        },
+        {
+          "name": "contract",
+          "type": "STRING",
+          "mode": "NULLABLE"
+        },
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "mode": "NULLABLE"
+        },
+        {
+          "name": "advertiser",
+          "type": "RECORD",
+          "mode": "NULLABLE",
+          "fields": [
+            {
+              "name": "agency",
+              "type": "RECORD",
+              "mode": "NULLABLE",
+              "fields": [
+                
+                {
+                  "name": "label",
+                  "type": "STRING",
+                  "mode": "NULLABLE"
+                },
+                {
+                  "name": "displayName",
+                  "type": "STRING",
+                  "mode": "NULLABLE"
+                },
+                {
+                  "name": "isPaid",
+                  "type": "STRING",
+                  "mode": "NULLABLE"
+                },
+                {
+                  "name": "type",
+                  "type": "STRING",
+                  "mode": "NULLABLE"
+                }
+              ]
+            },
+            {
+              "name": "hasCallNumbers",
+              "type": "STRING",
+              "mode": "NULLABLE"
+            }
+          ]
+        },
+        {
+          "name": "dataType",
+          "type": "STRING",
+          "mode": "NULLABLE"
+        }
+      ]
+    }
+  ]

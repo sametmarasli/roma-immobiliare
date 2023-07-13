@@ -1,6 +1,6 @@
 from typing import List
 
-from src.callapi import get_endpoint
+from src.immobiliare_api import get_endpoint
 from src.models import ApiParameters, ApiResponse, AdvertSchema
 
 

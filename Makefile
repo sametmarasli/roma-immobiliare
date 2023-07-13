@@ -1,59 +1,38 @@
-include .env
+include config/.env
+
+refresh_env:
+	export $(cat config/.env|xargs)
 
 create_gcs_bucket:
-	gcloud storage buckets create gs://${BUCKET_NAME} --location=europe-west8
+	# gcloud storage buckets create gs://${GCS_BUCKET_NAME} --location=${REGION}
+	gsutil mb -p ${PROJECT_ID} -c regional -l ${REGION} gs://${GCS_BUCKET_NAME}
 
-create_service_account_for_prefect:
-	gcloud iam service-accounts create prefect \
-  --description="Authorisation to use with Prefect Cloud and Prefect Agent"
+create_bq_dataset:	
+	bq --project_id=${PROJECT_ID} mk --location=${REGION} --dataset ${BQ_DATASET_ID}
 
-create_service_account_key_for_prefect_cloud:
-	gcloud iam service-accounts keys create service_account.json \
-  --iam-account=prefect@${PROJECT_ID}.iam.gserviceaccount.com
+service_account_create:
+	gcloud iam service-accounts create ${SERVICE_ACCOUNT_NAME} \
+	--description "Service account for project Roma" 
 
-grant_service_account_access_to_bucket:
-	gcloud storage buckets add-iam-policy-binding gs://${BUCKET_NAME} \
-	--member=serviceAccount:prefect@${PROJECT_ID}.iam.gserviceaccount.com \
-	--role=roles/storage.objectAdmin
+	gcloud iam service-accounts keys create ${SERVICE_ACCOUNT_NAME}_service_account.json \
+	--iam-account=${SERVICE_ACCOUNT_NAME}@${PROJECT_ID}.iam.gserviceaccount.com
 
-grant_service_account_access_for_cloud_runs:
+service_account_give_roles:
 	gcloud projects add-iam-policy-binding ${PROJECT_ID} \
-	--member=serviceAccount:prefect@${PROJECT_ID}.iam.gserviceaccount.com \
-	--role=roles/run.admin
-
+	--member=serviceAccount:${SERVICE_ACCOUNT_NAME}@${PROJECT_ID}.iam.gserviceaccount.com  \
+	--role roles/viewer
+	
 	gcloud projects add-iam-policy-binding ${PROJECT_ID} \
-	--member=serviceAccount:prefect@${PROJECT_ID}.iam.gserviceaccount.com \
-	--role=roles/iam.serviceAccountUser
+	--member=serviceAccount:${SERVICE_ACCOUNT_NAME}@${PROJECT_ID}.iam.gserviceaccount.com  \
+	--role roles/storage.admin
+	
+	gcloud projects add-iam-policy-binding ${PROJECT_ID} \
+	--member=serviceAccount:${SERVICE_ACCOUNT_NAME}@${PROJECT_ID}.iam.gserviceaccount.com  \
+	--role roles/editor
 
-create_vm_as_prefect_agent:
-	gcloud compute instances create prefect-agent \
-		--image=ubuntu-2004-focal-v20230605 \
-		--image-project=ubuntu-os-cloud \
-		--machine-type=e2-micro \
-		--zone=${ZONE} \
-		--service-account=prefect@${PROJECT_ID}.iam.gserviceaccount.com
+test:
+	echo "y" | bq rm ${BQ_DATASET_ID}.${BQ_TABLE_ID}
+	python main.py
 
-
-create_docker_repo_on_gcp:
-	gcloud artifacts repositories create prefect-flows-docker \
-	--repository-format=docker \
-	--location=${REGION} \
-	--description="Docker repository for Prefect Flows"
-
-docker_build_push_images:
-	docker image build -t ${DOCKER_IMAGE_NAME} .
-	docker image push -t ${DOCKER_IMAGE_NAME} 
-
-setup_instructions_for_artifact_registery:
-	gcloud auth configure-docker \
-    europe-west8-docker.pkg.dev
-
-build_and_push_docker_image_to_artifact_registery:
-	docker image build -t ${ARTIFACT_REGISTRY_PATH}/prefect:roma .
-	docker image push ${ARTIFACT_REGISTRY_PATH}/prefect:roma
-
-clean:
-	rm data/*
-
-setup_prefect_blocks:
-	sh ./setup_prefect_blocks.sh
+dbt_debug:
+	dbt debug --project-dir ${DBT_PROJECT_DIR} --profiles-dir ${DBT_PROFILES_DIR}
