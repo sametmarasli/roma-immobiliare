@@ -1,4 +1,6 @@
 dataSources: []
 dbt:
   projectDir: .
-  tag: piperider
+  # tag: piperider
+
+profiler:
