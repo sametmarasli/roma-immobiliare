@@ -3,7 +3,8 @@ version: 2
 sources:
   - name: staging
     database: zoomcamp-385810
-    schema: dwh_prova_1881
+    schema: dwh_development_1881
 
     tables:
-      - name: table_prova_1881
+      - name: table_development_i
+        

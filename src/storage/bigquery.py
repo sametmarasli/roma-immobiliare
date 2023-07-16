@@ -5,9 +5,6 @@ from dotenv import load_dotenv
 from pathlib import Path
 import json 
 
-# Load environment variables from .env file
-load_dotenv('./config/.env')
-service_account = os.getenv('GCP_SERVICE_ACCOUNT_PATH')
 
 class StorageBigQuery:
 
@@ -15,11 +12,10 @@ class StorageBigQuery:
         self.service_account = service_account        
         
     
-
     def create_dataset(self, project_id, dataset_id: str, location) -> None:
 
         # Construct a BigQuery client object.
-        client = bigquery.Client().from_service_account_json(service_account)
+        client = bigquery.Client().from_service_account_json(self.service_account)
         dataset_ref = f"{project_id}.{dataset_id}"
 
         client.delete_dataset(dataset_ref, delete_contents=True, not_found_ok=True)
@@ -35,7 +31,7 @@ class StorageBigQuery:
     def delete_dataset(self, project_id, dataset_id: str) -> None:
 
         # Construct a BigQuery client object.
-        client = bigquery.Client().from_service_account_json(service_account)
+        client = bigquery.Client().from_service_account_json(self.service_account)
         dataset_ref = f"{project_id}.{dataset_id}"
 
         # Use the delete_contents parameter to delete a dataset and its contents.
@@ -53,7 +49,7 @@ class StorageBigQuery:
                 table_id: str,
                 bq_schema) -> None:
             
-        client = bigquery.Client().from_service_account_json(service_account)
+        client = bigquery.Client().from_service_account_json(self.service_account)
         table_ref = f"{project_id}.{dataset_id}.{table_id}"
         
         with open(bq_schema, "r") as schema_file:
@@ -68,7 +64,7 @@ class StorageBigQuery:
                 dataset_id,
                 table_id: str,) -> None:
 
-        client = bigquery.Client().from_service_account_json(service_account)
+        client = bigquery.Client().from_service_account_json(self.service_account)
         table_ref = f"{project_id}.{dataset_id}.{table_id}"
         # If the table does not exist, delete_table raises
         # google.api_core.exceptions.NotFound unless not_found_ok is True.
@@ -87,7 +83,7 @@ class StorageBigQuery:
 
 
 
-        client = bigquery.Client().from_service_account_json(service_account)
+        client = bigquery.Client().from_service_account_json(self.service_account)
         table_ref = f"{project_id}.{dataset_id}.{table_id}"
 
         job_config = bigquery.LoadJobConfig()
@@ -122,7 +118,7 @@ class StorageBigQuery:
                             dataset_id, 
                             table_id,
                              ):
-        client = bigquery.Client().from_service_account_json(service_account)
+        client = bigquery.Client().from_service_account_json(self.service_account)
         table_ref = f"{project_id}.{dataset_id}.{table_id}"
         table = client.get_table(table_ref)
         return StorageBigQuery._serialize_json_schema(table.schema)

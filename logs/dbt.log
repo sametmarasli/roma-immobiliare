@@ -1,14 +1,136 @@
-[0m21:54:25.581600 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f617759f610>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f61761c51b0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f61761c5030>]}
+[0m15:48:22.021548 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f468acd5b10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f46898dd270>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f46898dd1b0>]}
 
 
-============================== 21:54:25.586562 | ca0af786-74bd-40ce-88f0-9fbbaf332f0e ==============================
-[0m21:54:25.586562 [info ] [MainThread]: Running with dbt=1.5.2
-[0m21:54:25.587762 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'debug': 'False', 'log_path': 'logs', 'profiles_dir': '/home/fistik/.dbt', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'static_parser': 'True', 'log_format': 'default', 'target_path': 'None', 'send_anonymous_usage_stats': 'True'}
-[0m21:54:25.588667 [error] [MainThread]: Encountered an error:
-Runtime Error
-  No dbt_project.yml found at expected path /home/fistik/projects/roma/dbt_project.yml
-  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
-  
-[0m21:54:25.589940 [debug] [MainThread]: Command `dbt run` failed at 21:54:25.589718 after 0.02 seconds
-[0m21:54:25.590729 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f617759f610>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f61761c5060>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f61761c5300>]}
-[0m21:54:25.591387 [debug] [MainThread]: Flushing usage events
+============================== 15:48:22.025730 | 7d56969b-1e70-437c-9588-5d7f2e8af5df ==============================
+[0m15:48:22.025730 [info ] [MainThread]: Running with dbt=1.5.2
+[0m15:48:22.026837 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'False', 'fail_fast': 'False', 'log_path': 'logs', 'version_check': 'True', 'profiles_dir': '/home/fistik/.dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'log_format': 'default', 'introspect': 'True', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'target_path': 'None', 'send_anonymous_usage_stats': 'True'}
+[0m15:48:29.453753 [debug] [MainThread]: Starter project path: /home/fistik/.pyenv/versions/3.10.4/envs/roma/lib/python3.10/site-packages/dbt/include/starter_project
+[0m15:48:29.458515 [debug] [MainThread]: Command `dbt init` succeeded at 15:48:29.458287 after 7.45 seconds
+[0m15:48:29.459171 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f468acd5b10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f46898dd4b0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f46898dd3f0>]}
+[0m15:48:29.459847 [debug] [MainThread]: Flushing usage events
+[0m15:50:11.970332 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe1ee595ba0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe1ed1a1390>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe1ed1a11e0>]}
+
+
+============================== 15:50:11.974742 | 4185e987-c00d-4b8b-b6f0-8c05e97f3677 ==============================
+[0m15:50:11.974742 [info ] [MainThread]: Running with dbt=1.5.2
+[0m15:50:11.976079 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'version_check': 'True', 'log_path': 'logs', 'debug': 'False', 'profiles_dir': '/home/fistik/.dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'log_format': 'default', 'introspect': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'target_path': 'None', 'send_anonymous_usage_stats': 'True'}
+[0m15:50:11.976952 [info ] [MainThread]: dbt version: 1.5.2
+[0m15:50:11.977984 [info ] [MainThread]: python version: 3.10.4
+[0m15:50:11.979336 [info ] [MainThread]: python path: /home/fistik/.pyenv/versions/3.10.4/envs/roma/bin/python3.10
+[0m15:50:11.980358 [info ] [MainThread]: os info: Linux-5.15.0-1037-gcp-x86_64-with-glibc2.31
+[0m15:50:11.981191 [info ] [MainThread]: Using profiles.yml file at /home/fistik/.dbt/profiles.yml
+[0m15:50:11.982006 [info ] [MainThread]: Using dbt_project.yml file at /home/fistik/projects/roma-immobiliare/dbt_project.yml
+[0m15:50:11.982821 [info ] [MainThread]: Configuration:
+[0m15:50:13.205426 [info ] [MainThread]:   profiles.yml file [[32mOK found and valid[0m]
+[0m15:50:13.206575 [info ] [MainThread]:   dbt_project.yml file [[31mERROR not found[0m]
+[0m15:50:13.207433 [info ] [MainThread]: Required dependencies:
+[0m15:50:13.208283 [debug] [MainThread]: Executing "git --help"
+[0m15:50:13.211421 [debug] [MainThread]: STDOUT: "b"usage: git [--version] [--help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]\n           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone             Clone a repository into a new directory\n   init              Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add               Add file contents to the index\n   mv                Move or rename a file, a directory, or a symlink\n   restore           Restore working tree files\n   rm                Remove files from the working tree and from the index\n   sparse-checkout   Initialize and modify the sparse-checkout\n\nexamine the history and state (see also: git help revisions)\n   bisect            Use binary search to find the commit that introduced a bug\n   diff              Show changes between commits, commit and working tree, etc\n   grep              Print lines matching a pattern\n   log               Show commit logs\n   show              Show various types of objects\n   status            Show the working tree status\n\ngrow, mark and tweak your common history\n   branch            List, create, or delete branches\n   commit            Record changes to the repository\n   merge             Join two or more development histories together\n   rebase            Reapply commits on top of another base tip\n   reset             Reset current HEAD to the specified state\n   switch            Switch branches\n   tag               Create, list, delete or verify a tag object signed with GPG\n\ncollaborate (see also: git help workflows)\n   fetch             Download objects and refs from another repository\n   pull              Fetch from and integrate with another repository or a local branch\n   push              Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m15:50:13.212175 [debug] [MainThread]: STDERR: "b''"
+[0m15:50:13.212865 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m15:50:13.213493 [info ] [MainThread]: Connection:
+[0m15:50:13.214161 [info ] [MainThread]:   method: service-account
+[0m15:50:13.214802 [info ] [MainThread]:   database: a
+[0m15:50:13.215407 [info ] [MainThread]:   schema: a
+[0m15:50:13.216440 [info ] [MainThread]:   location: US
+[0m15:50:13.217552 [info ] [MainThread]:   priority: interactive
+[0m15:50:13.218662 [info ] [MainThread]:   timeout_seconds: 300
+[0m15:50:13.219766 [info ] [MainThread]:   maximum_bytes_billed: None
+[0m15:50:13.220921 [info ] [MainThread]:   execution_project: a
+[0m15:50:13.222054 [info ] [MainThread]:   job_retry_deadline_seconds: None
+[0m15:50:13.223184 [info ] [MainThread]:   job_retries: 1
+[0m15:50:13.224313 [info ] [MainThread]:   job_creation_timeout_seconds: None
+[0m15:50:13.225198 [info ] [MainThread]:   job_execution_timeout_seconds: 300
+[0m15:50:13.225822 [info ] [MainThread]:   gcs_bucket: None
+[0m15:50:13.227311 [info ] [MainThread]: Registered adapter: bigquery=1.5.3
+[0m15:50:13.230209 [debug] [MainThread]: Acquiring new bigquery connection 'debug'
+[0m15:50:13.230852 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m15:50:13.231519 [debug] [MainThread]: BigQuery adapter: Got an error when attempting to create a bigquery client: '[Errno 2] No such file or directory: 'a''
+[0m15:50:13.232294 [info ] [MainThread]:   Connection test: [[31mERROR[0m]
+
+[0m15:50:13.232970 [info ] [MainThread]: [31m2 checks failed:[0m
+[0m15:50:13.233574 [info ] [MainThread]: Could not load dbt_project.yml
+
+[0m15:50:13.234210 [info ] [MainThread]: dbt was unable to connect to the specified database.
+The database returned the following error:
+
+  >Database Error
+  [Errno 2] No such file or directory: 'a'
+
+Check your database credentials and try again. For more information, visit:
+https://docs.getdbt.com/docs/configure-your-profile
+
+
+[0m15:50:13.235255 [debug] [MainThread]: Command `dbt debug` failed at 15:50:13.235069 after 1.28 seconds
+[0m15:50:13.235842 [debug] [MainThread]: Connection 'debug' was properly closed.
+[0m15:50:13.236436 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe1ee595ba0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe1dda24a90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe1dda25840>]}
+[0m15:50:13.237081 [debug] [MainThread]: Flushing usage events
+[0m15:51:42.124028 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff801639ba0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff80023d360>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff80023d2a0>]}
+
+
+============================== 15:51:42.128286 | fb182d7c-a69c-4598-8833-2793fa3aec4e ==============================
+[0m15:51:42.128286 [info ] [MainThread]: Running with dbt=1.5.2
+[0m15:51:42.129272 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/home/fistik/projects/roma-immobiliare/dbt_roma', 'version_check': 'True', 'fail_fast': 'False', 'log_path': 'logs', 'debug': 'False', 'warn_error': 'None', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'introspect': 'True', 'log_format': 'default', 'target_path': 'None', 'send_anonymous_usage_stats': 'True'}
+[0m15:51:42.130071 [info ] [MainThread]: dbt version: 1.5.2
+[0m15:51:42.130741 [info ] [MainThread]: python version: 3.10.4
+[0m15:51:42.131440 [info ] [MainThread]: python path: /home/fistik/.pyenv/versions/3.10.4/envs/roma/bin/python3.10
+[0m15:51:42.132328 [info ] [MainThread]: os info: Linux-5.15.0-1037-gcp-x86_64-with-glibc2.31
+[0m15:51:42.133053 [info ] [MainThread]: Using profiles.yml file at /home/fistik/projects/roma-immobiliare/dbt_roma/profiles.yml
+[0m15:51:42.133887 [info ] [MainThread]: Using dbt_project.yml file at /home/fistik/projects/roma-immobiliare/dbt_project.yml
+[0m15:51:42.134543 [info ] [MainThread]: Configuration:
+[0m15:51:42.143895 [error] [MainThread]: Encountered an error:
+Parsing Error
+  Env var required but not provided: 'PROJECT_ID'
+[0m15:51:42.145883 [debug] [MainThread]: Command `dbt debug` failed at 15:51:42.145642 after 0.04 seconds
+[0m15:51:42.146499 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff801639ba0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff80023fdc0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff80023f850>]}
+[0m15:51:42.147145 [debug] [MainThread]: Flushing usage events
+[0m16:02:53.552686 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0d49699e40>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0d482a1600>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0d482a1510>]}
+
+
+============================== 16:02:53.557037 | 0c9c4ce5-5709-4345-9e45-fa442cfeee84 ==============================
+[0m16:02:53.557037 [info ] [MainThread]: Running with dbt=1.5.2
+[0m16:02:53.559312 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/home/fistik/projects/roma-immobiliare/dbt_roma', 'fail_fast': 'False', 'version_check': 'True', 'log_path': 'logs', 'warn_error': 'None', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'log_format': 'default', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'target_path': 'None', 'send_anonymous_usage_stats': 'True'}
+[0m16:02:53.560519 [info ] [MainThread]: dbt version: 1.5.2
+[0m16:02:53.561239 [info ] [MainThread]: python version: 3.10.4
+[0m16:02:53.561952 [info ] [MainThread]: python path: /home/fistik/.pyenv/versions/3.10.4/envs/roma/bin/python3.10
+[0m16:02:53.562612 [info ] [MainThread]: os info: Linux-5.15.0-1037-gcp-x86_64-with-glibc2.31
+[0m16:02:53.563598 [info ] [MainThread]: Using profiles.yml file at /home/fistik/projects/roma-immobiliare/dbt_roma/profiles.yml
+[0m16:02:53.564640 [info ] [MainThread]: Using dbt_project.yml file at /home/fistik/projects/roma-immobiliare/dbt_project.yml
+[0m16:02:53.565428 [info ] [MainThread]: Configuration:
+[0m16:02:54.796691 [info ] [MainThread]:   profiles.yml file [[32mOK found and valid[0m]
+[0m16:02:54.797625 [info ] [MainThread]:   dbt_project.yml file [[31mERROR not found[0m]
+[0m16:02:54.798279 [info ] [MainThread]: Required dependencies:
+[0m16:02:54.799018 [debug] [MainThread]: Executing "git --help"
+[0m16:02:54.802121 [debug] [MainThread]: STDOUT: "b"usage: git [--version] [--help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]\n           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone             Clone a repository into a new directory\n   init              Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add               Add file contents to the index\n   mv                Move or rename a file, a directory, or a symlink\n   restore           Restore working tree files\n   rm                Remove files from the working tree and from the index\n   sparse-checkout   Initialize and modify the sparse-checkout\n\nexamine the history and state (see also: git help revisions)\n   bisect            Use binary search to find the commit that introduced a bug\n   diff              Show changes between commits, commit and working tree, etc\n   grep              Print lines matching a pattern\n   log               Show commit logs\n   show              Show various types of objects\n   status            Show the working tree status\n\ngrow, mark and tweak your common history\n   branch            List, create, or delete branches\n   commit            Record changes to the repository\n   merge             Join two or more development histories together\n   rebase            Reapply commits on top of another base tip\n   reset             Reset current HEAD to the specified state\n   switch            Switch branches\n   tag               Create, list, delete or verify a tag object signed with GPG\n\ncollaborate (see also: git help workflows)\n   fetch             Download objects and refs from another repository\n   pull              Fetch from and integrate with another repository or a local branch\n   push              Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m16:02:54.802853 [debug] [MainThread]: STDERR: "b''"
+[0m16:02:54.803318 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m16:02:54.803997 [info ] [MainThread]: Connection:
+[0m16:02:54.804645 [info ] [MainThread]:   method: service-account
+[0m16:02:54.805266 [info ] [MainThread]:   database: zoomcamp-385810
+[0m16:02:54.805963 [info ] [MainThread]:   schema: dwh_development_1881
+[0m16:02:54.806569 [info ] [MainThread]:   location: None
+[0m16:02:54.807273 [info ] [MainThread]:   priority: None
+[0m16:02:54.807940 [info ] [MainThread]:   timeout_seconds: None
+[0m16:02:54.808555 [info ] [MainThread]:   maximum_bytes_billed: None
+[0m16:02:54.809257 [info ] [MainThread]:   execution_project: zoomcamp-385810
+[0m16:02:54.809873 [info ] [MainThread]:   job_retry_deadline_seconds: None
+[0m16:02:54.810461 [info ] [MainThread]:   job_retries: 1
+[0m16:02:54.811143 [info ] [MainThread]:   job_creation_timeout_seconds: None
+[0m16:02:54.811745 [info ] [MainThread]:   job_execution_timeout_seconds: None
+[0m16:02:54.812407 [info ] [MainThread]:   gcs_bucket: None
+[0m16:02:54.813481 [info ] [MainThread]: Registered adapter: bigquery=1.5.3
+[0m16:02:54.814543 [debug] [MainThread]: Acquiring new bigquery connection 'debug'
+[0m16:02:54.815077 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m16:02:54.867642 [debug] [MainThread]: On debug: select 1 as id
+[0m16:02:56.081548 [debug] [MainThread]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=zoomcamp-385810&j=bq:US:d4c42f22-de46-4c37-a2d1-8e458c271007&page=queryresults
+[0m16:02:56.082320 [info ] [MainThread]:   Connection test: [[32mOK connection ok[0m]
+
+[0m16:02:56.083104 [info ] [MainThread]: [31m1 check failed:[0m
+[0m16:02:56.083781 [info ] [MainThread]: Could not load dbt_project.yml
+
+[0m16:02:56.085043 [debug] [MainThread]: Command `dbt debug` failed at 16:02:56.084844 after 2.55 seconds
+[0m16:02:56.085625 [debug] [MainThread]: Connection 'debug' was properly closed.
+[0m16:02:56.086239 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0d49699e40>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0d39004550>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0d4ae3f160>]}
+[0m16:02:56.086903 [debug] [MainThread]: Flushing usage events

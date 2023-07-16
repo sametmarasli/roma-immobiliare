@@ -42,6 +42,7 @@ def test_create_bucket(delete_gcs_bucket):
     '''test creating a new bucket
     '''
     print('LOG: Creating a new bucked named: ',tests.GCS_BUCKET_NAME)
+    print(tests.GCP_SERVICE_ACCOUNT_PATH)
     gcs = StorageGCS(tests.GCP_SERVICE_ACCOUNT_PATH)
     gcs.create_bucket(bucket_name=tests.GCS_BUCKET_NAME, location=tests.REGION)
     print('LOG: check if the bucket is in the list of created buckets')

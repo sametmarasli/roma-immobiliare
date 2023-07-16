@@ -1,0 +1,4 @@
+dataSources: []
+dbt:
+  projectDir: .
+  tag: piperider

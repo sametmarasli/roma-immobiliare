@@ -28,7 +28,7 @@ class ApiPagination:
         pages = self._get_maximum_number_of_pages_for_specific_call(parameters)
         for page in range(1, pages + 1):
             parameters.pag = page
-            print(f"Calling page {page}")
+            print(f"Calling page {page} for {parameters.prezzoMinimo}-{parameters.prezzoMassimo} out ot {pages}")
             response = ImmobiliareApi().get_endpoint(parameters)
             results.extend(response.results)
 

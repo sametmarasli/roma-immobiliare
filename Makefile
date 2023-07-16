@@ -1,4 +1,4 @@
-include config/.env
+include config/.env.development
 
 refresh_env:
 	export $(cat config/.env|xargs)
@@ -30,9 +30,16 @@ service_account_give_roles:
 	--member=serviceAccount:${SERVICE_ACCOUNT_NAME}@${PROJECT_ID}.iam.gserviceaccount.com  \
 	--role roles/editor
 
+create_service_account_key:
+	gcloud iam service-accounts keys create roma-1881_service_account.json \
+  --iam-account=${SERVICE_ACCOUNT_NAME}@${PROJECT_ID}.iam.gserviceaccount.com
+
 test:
 	echo "y" | bq rm ${BQ_DATASET_ID}.${BQ_TABLE_ID}
 	python main.py
 
 dbt_debug:
-	dbt debug --project-dir ${DBT_PROJECT_DIR} --profiles-dir ${DBT_PROFILES_DIR}
+	dbt init --project-dir ${DBT_PROJECT_DIR} --profiles-dir ${DBT_PROFILES_DIR}
+
+set_env_variables:
+	export $(cat ./config/.env.development | xargs)

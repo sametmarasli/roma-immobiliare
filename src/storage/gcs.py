@@ -1,16 +1,11 @@
 import os
 from typing import Union
-from dotenv import load_dotenv
 from google.cloud import storage
-
-# Load environment variables from .env file
-load_dotenv('./config/.env')
-service_account = os.getenv('GCP_SERVICE_ACCOUNT_PATH')
 
 
 class StorageGCS:
 
-    def __init__(self, service_account=service_account):
+    def __init__(self, service_account):
         self.service_account = service_account
     
     def create_bucket(self, bucket_name:str,location) -> None:
