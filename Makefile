@@ -1,14 +1,7 @@
-include config/.env.development
+include config/.env.test
 
 refresh_env:
 	export $(cat config/.env|xargs)
-
-create_gcs_bucket:
-	# gcloud storage buckets create gs://${GCS_BUCKET_NAME} --location=${REGION}
-	gsutil mb -p ${PROJECT_ID} -c regional -l ${REGION} gs://${GCS_BUCKET_NAME}
-
-create_bq_dataset:	
-	bq --project_id=${PROJECT_ID} mk --location=${REGION} --dataset ${BQ_DATASET_ID}
 
 service_account_create:
 	gcloud iam service-accounts create ${SERVICE_ACCOUNT_NAME} \
@@ -30,9 +23,17 @@ service_account_give_roles:
 	--member=serviceAccount:${SERVICE_ACCOUNT_NAME}@${PROJECT_ID}.iam.gserviceaccount.com  \
 	--role roles/editor
 
+create_gcs_bucket:
+	# gcloud storage buckets create gs://${GCS_BUCKET_NAME} --location=${REGION}
+	gsutil mb -p ${PROJECT_ID} -c regional -l ${REGION} gs://${GCS_BUCKET_NAME}
+
+create_bq_dataset:	
+	bq --project_id=${PROJECT_ID} mk --location=${REGION} --dataset ${BQ_DATASET_ID}
+
+
 create_service_account_key:
-	gcloud iam service-accounts keys create roma-1881_service_account.json \
-  --iam-account=${SERVICE_ACCOUNT_NAME}@${PROJECT_ID}.iam.gserviceaccount.com
+	gcloud iam service-accounts keys create ${SERVICE_ACCOUNT_NAME}_service_account.json \
+	--iam-account=${SERVICE_ACCOUNT_NAME}@${PROJECT_ID}.iam.gserviceaccount.com
 
 test:
 	echo "y" | bq rm ${BQ_DATASET_ID}.${BQ_TABLE_ID}

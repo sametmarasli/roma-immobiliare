@@ -1,11 +1,7 @@
-from src.storage.gcs import StorageGCS
 from src.storage.local import StorageLocal
 from src.api.pagination import ApiPagination
 from src.models import ApiParameters
-import tests
-
 import pytest
-import json 
 
 @pytest.fixture
 def provide_serialized_paginated_results():
