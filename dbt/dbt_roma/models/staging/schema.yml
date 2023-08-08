@@ -1,0 +1,7 @@
+version: 2
+
+sources:
+  - name: warehouse
+    description: Data from application database, brought in by an EL process.
+    tables:
+      - name: table_test_i
