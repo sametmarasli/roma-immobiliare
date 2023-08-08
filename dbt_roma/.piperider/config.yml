@@ -1,6 +1,0 @@
-dataSources: []
-dbt:
-  projectDir: .
-  # tag: piperider
-
-profiler:
