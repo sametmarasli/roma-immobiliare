@@ -1,5 +1,6 @@
 import requests
 from dataclasses import asdict
+from datetime import datetime
 
 from src.models import ApiParameters, ApiResponse
 
@@ -17,6 +18,7 @@ class ImmobiliareApi:
         """
         response = requests.get(url=self.BASE_URL, params=asdict(params))
         response.raise_for_status()
+        
         response =  ApiResponse.from_dict(response.json())
         
         return response

@@ -1,6 +1,7 @@
 from dataclasses import dataclass, field
 from typing import Dict, List, Literal, Optional
 import inspect
+from datetime import datetime
 
 DEFAULT_STR_NA = 'n/a'
 DEFAULT_INT_NA = 0
@@ -120,14 +121,16 @@ class RealEstateSchema(BaseModel):
         self.typology = RealEstateTypologySchema.from_dict(self.typology)
         self.properties = [RealEstatePropertiesSchema.from_dict(i) for i in self.properties]
 
+
 @dataclass
 class AdvertSchema(BaseModel):
     realEstate: dict 
     seo: dict  = field(default_factory=dict)
-    
+    ingestion_date : str = field(default=datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+
     def __post_init__(self):
         self.realEstate = RealEstateSchema.from_dict(self.realEstate)
-        
+
 @dataclass
 class ApiResponse(BaseModel):
     count: int = DEFAULT_STR_NA
@@ -140,7 +143,7 @@ class ApiResponse(BaseModel):
     relatedSearches: dict = field(default_factory=dict)
     suggestedSearchData: dict = field(default_factory=dict)
     currentPage: int = DEFAULT_STR_NA
-    maxPages: int = DEFAULT_STR_NA
+    maxPages: int = DEFAULT_STR_NA    
 
     def __post_init__(self):
         self.results = [AdvertSchema.from_dict(i) for i in self.results]

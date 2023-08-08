@@ -1,4 +1,9 @@
 [
+    
+    {
+    "name": "ingestion_date",
+    "type": "STRING"
+    },
     {
       "name": "seo",
       "type": "RECORD",

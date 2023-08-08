@@ -34,7 +34,7 @@ class ApiPagination:
 
         minimum_price = parameters.prezzoMinimo
         maximum_price = parameters.prezzoMassimo
-        
+             
         return results, (minimum_price, maximum_price)
     
     def serialize_paginated_results(self, 
