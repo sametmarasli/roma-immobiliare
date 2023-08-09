@@ -2,6 +2,8 @@ from dataclasses import dataclass, field
 from typing import Dict, List, Literal, Optional
 import inspect
 from datetime import datetime
+import uuid
+
 
 DEFAULT_STR_NA = 'n/a'
 DEFAULT_INT_NA = 0
@@ -127,6 +129,7 @@ class AdvertSchema(BaseModel):
     realEstate: dict 
     seo: dict  = field(default_factory=dict)
     ingestion_date : str = field(default=datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+    advert_id : str = DEFAULT_STR_NA
 
     def __post_init__(self):
         self.realEstate = RealEstateSchema.from_dict(self.realEstate)

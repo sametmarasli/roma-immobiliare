@@ -1,9 +1,13 @@
-{{
-  config(
-    materialized='table'
-)
-}}
+with source as (
+    select *
+    from {{ source('staging', 'table_test_dbt_i') }}
+) , renamed as (
+    select 
+        ingestion_date,
+        realEstate.visibility,
+        realEstate.properties[offset(0)].bathrooms,
 
+    from source
+)
 select *
-from `roma-immobiliare-395210.dwh_test_1881.table_test_i` 
-limit 1000
+from renamed

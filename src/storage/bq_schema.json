@@ -5,6 +5,10 @@
     "type": "STRING"
     },
     {
+        "name": "advert_id",
+        "type": "STRING"
+        },
+    {
       "name": "seo",
       "type": "RECORD",
       "mode": "NULLABLE",

@@ -1,7 +1,11 @@
 version: 2
 
 sources:
-  - name: warehouse
-    description: Data from application database, brought in by an EL process.
-    tables:
-      - name: table_test_i
+    - name: staging
+      database: roma-immobiliare-395210
+      schema: dwh_test_1881
+      tables:
+        - name: table_test_dbt_i
+
+         # freshness:
+           # error_after: {count: 6, period: hour}

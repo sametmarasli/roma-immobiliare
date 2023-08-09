@@ -1,5 +1,5 @@
 from typing import List
-
+import uuid
 from src.api.call import ImmobiliareApi
 from src.models import ApiParameters, ApiResponse, AdvertSchema
 import json
@@ -48,7 +48,7 @@ class ApiPagination:
             
             # serialize as json
             json_results = '\n'.join(
-                [json.dumps(asdict(result)) for result in results]
+                [ json.dumps({ **asdict(result), ** {"advert_id":str(uuid.uuid4())}}) for result in results]
             )
                 
             return json_results, json_file_name
