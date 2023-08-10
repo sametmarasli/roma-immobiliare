@@ -10,7 +10,8 @@ class ApiPagination:
     def __init__(self):
         pass
     
-    def _get_maximum_number_of_pages_for_specific_call(self, parameters: ApiParameters) -> int:
+    def _get_maximum_number_of_pages_for_specific_call(self, 
+                                                       parameters: ApiParameters) -> int:
         '''
         The Api does not fetch more than 80 pages
         So it is important to know if there are more than 80 pages

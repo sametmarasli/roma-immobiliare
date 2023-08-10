@@ -2,14 +2,7 @@ include config/.env.test
 
 
 export_environment_variables:
-# export $(cat config/.env.test|xargs)
-	export DBT_PROJECT_DIR=${DBT_PROJECT_DIR}
-	export DBT_PROFILES_DIR=${DBT_PROFILES_DIR}
-	export DBT_PROJECT_DIR=${DBT_PROJECT_DIR}
-	export GCP_SERVICE_ACCOUNT_PATH=${GCP_SERVICE_ACCOUNT_PATH}
-	export BQ_DATASET_ID=${BQ_DATASET_ID}
-	export BQ_TABLE_ID_TEST_DBT=${BQ_TABLE_ID_TEST_DBT}
-	export PROJECT_ID=${PROJECT_ID}
+	export $(cat config/.env.test|xargs)
 
 service_account_create:
 	gcloud iam service-accounts create ${SERVICE_ACCOUNT_NAME} \

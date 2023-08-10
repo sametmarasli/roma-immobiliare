@@ -38,22 +38,22 @@ def setup_bq_dataset_and_table():
     big_query = StorageBigQuery(tests.GCP_SERVICE_ACCOUNT_PATH)
     big_query.create_dataset(
         project_id=tests.PROJECT_ID,
-        dataset_id=tests.BQ_DATASET_ID,
+        dataset_id=tests.BQ_DATASET_ID_TEST,
         location=tests.REGION)
     big_query.create_table(
         project_id=tests.PROJECT_ID,
-        dataset_id=tests.BQ_DATASET_ID,
-        table_id=tests.BQ_TABLE_ID,
+        dataset_id=tests.BQ_DATASET_ID_TEST,
+        table_id=tests.BQ_TABLE_ID_TEST,
         bq_schema=tests.BQ_SCHEMA)
     yield
     print('LOG: Teardown... setup_bq_dataset_and_table')
     big_query.delete_table(
         project_id=tests.PROJECT_ID,
-        dataset_id=tests.BQ_DATASET_ID,
-        table_id=tests.BQ_TABLE_ID,)
+        dataset_id=tests.BQ_DATASET_ID_TEST,
+        table_id=tests.BQ_TABLE_ID_TEST,)
     big_query.delete_dataset(
         project_id=tests.PROJECT_ID,
-        dataset_id=tests.BQ_DATASET_ID,)
+        dataset_id=tests.BQ_DATASET_ID_TEST,)
 
 
 
@@ -64,8 +64,8 @@ def test_ingest_json_from_gcs_to_bq(setup_bq_dataset_and_table,setup_gcs_bucket)
     big_query = StorageBigQuery(tests.GCP_SERVICE_ACCOUNT_PATH)
     big_query.ingest_data_to_bigquery_from_gcs(
                                 project_id = tests.PROJECT_ID,
-                                dataset_id = tests.BQ_DATASET_ID, 
-                                table_id = tests.BQ_TABLE_ID,
+                                dataset_id = tests.BQ_DATASET_ID_TEST, 
+                                table_id = tests.BQ_TABLE_ID_TEST,
                                 gcs_bucket_uri = tests.GCS_BUCKET_URI, 
                                 blob_path = 'test_bq/*', 
                                 bq_schema = tests.BQ_SCHEMA,

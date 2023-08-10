@@ -15,3 +15,5 @@ todo:
 - [ ] setup dbt to transform data by using Bigquery
 - [ ] setup Data Studio studio for dashboard
 - [ ] move all the infra code to terraform
+- feature ideas:
+    [ ] advert page and order number 

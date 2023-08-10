@@ -14,11 +14,15 @@ class BaseModel:
     from_dict method helps to manage schema changes if there are unforseen attributes by ignoring them
     '''
     @classmethod
-    def from_dict(cls, env):      
-        return cls(**{
-            k: v for k, v in env.items() 
-            if k in inspect.signature(cls).parameters
-        })
+    def from_dict(cls, env):
+        try:      
+            return cls(**{
+                k: v for k, v in env.items() 
+                if k in inspect.signature(cls).parameters
+            })
+        except Exception as e:
+                # print(e)
+                return {}
 
 @dataclass
 class RealEstatePropertiesMultimediaSchema(BaseModel):

@@ -31,7 +31,7 @@ def setup_gcs_bucket():
 @pytest.fixture
 def setup_data_on_memory():
     print('LOG: Setup ...')
-    parameters = ApiParameters(prezzoMinimo=100_000,prezzoMassimo=100_050)
+    parameters = ApiParameters(prezzoMinimo=300_000,prezzoMassimo=300_050)
     api = ApiPagination()
     json_results, json_file_name = api.serialize_paginated_results(parameters)
     yield json_results, json_file_name

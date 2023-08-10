@@ -8,7 +8,7 @@ import json
 @pytest.fixture
 def setup_parameters():
     # '''call some data to '''
-    parameters = ApiParameters(prezzoMinimo=100_000,prezzoMassimo=100_050)
+    parameters = ApiParameters(prezzoMinimo=300_000,prezzoMassimo=300_050)
     print('setup')
     yield parameters
     print('teardown')
