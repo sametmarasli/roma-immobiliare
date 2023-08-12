@@ -17,3 +17,8 @@ todo:
 - [ ] move all the infra code to terraform
 - feature ideas:
     [ ] advert page and order number 
+
+# LOG
+12.08
+- There is no way to filter auctions by url arguments
+- Started to build real estate properties model

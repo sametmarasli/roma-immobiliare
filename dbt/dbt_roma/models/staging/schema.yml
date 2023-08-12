@@ -3,9 +3,9 @@ version: 2
 sources:
     - name: staging
       database: roma-immobiliare-395210
-      schema: dwh_test_1881
+      schema: dwh_test_dbt
       tables:
-        - name: table_test_dbt_i
+        - name: table_test_dbt
 
          # freshness:
            # error_after: {count: 6, period: hour}
