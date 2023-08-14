@@ -22,3 +22,5 @@ todo:
 12.08
 - There is no way to filter auctions by url arguments
 - Started to build real estate properties model
+14.08
+- Finished preparing stage models, still need to be casted to correct types and add tests
