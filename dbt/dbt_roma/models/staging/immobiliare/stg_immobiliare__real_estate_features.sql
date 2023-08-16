@@ -1,13 +1,18 @@
 with source_1 as (
-    select * from {{ ref('base_immobiliare__real_estate_features_i') }}
+    select *
+    from {{ ref('base_immobiliare__real_estate_features_i') }}
 ),
+
 source_2 as (
-    select * from {{ ref('base_immobiliare__real_estate_features_ii') }}
+    select *
+    from {{ ref('base_immobiliare__real_estate_features_ii') }}
 ),
+
 concatenated_features as (
-    SELECT * FROM source_1
-    UNION ALL
-    SELECT * FROM source_2
+    select * from source_1
+    union all
+    select * from source_2
 )
-select DISTINCT *
+
+select distinct *
 from concatenated_features

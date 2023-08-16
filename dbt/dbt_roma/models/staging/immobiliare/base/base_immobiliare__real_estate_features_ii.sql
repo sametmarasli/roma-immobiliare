@@ -1,13 +1,15 @@
 with source as (
     select *
-    from {{ source('immobiliare', 'table_test_dbt') }}
+    from {{ ref('base_immobiliare__selling_adverts') }}
 ),
+
 renamed as (
-    SELECT 
+    select
         advert_id,
-        re_features,
-    FROM source
-    CROSS JOIN UNNEST(realEstate.properties [SAFE_OFFSET(0)].features) AS re_features
+        re_features
+    from source
+    cross join unnest(realestate.properties[safe_offset(0)].features) as re_features
 )
+
 select *
 from renamed

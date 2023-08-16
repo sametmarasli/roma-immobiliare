@@ -1,38 +1,46 @@
-    with source as (
+{{ config( materialized='table') }}
+
+with
+
+source as (
     select *
-    from {{ source('immobiliare', 'table_test_dbt') }}
-    ),
-    renamed as (
-    select 
+    from {{ ref('base_immobiliare__selling_adverts') }}
+),
+
+renamed as (
+    select
         -- ids
         advert_id as advert_id,
-        realEstate.id as immobiliare_advert_id,
-        
+        cast(realestate.id as string) as advert_immobiliare_id,
+
         -- strings 
-        realEstate.title as advert_title,
-        realEstate.type as advert_type,
-        realEstate.contract as advert_contract_type,
-        seo.metaTitle as advert_seo_meta_title,
-        realEstate.properties[SAFE_OFFSET(0)].description as advert_description,
-        realEstate.properties[SAFE_OFFSET(0)].caption as advert_caption,
-        realEstate.visibility as advert_visibility,
-        realEstate.contract as advert_contract,
+        realestate.title as advert_title,
+        seo.metatitle as advert_seo_meta_title,
+        realestate.properties[safe_offset(0)].description as advert_description,
+        realestate.properties[safe_offset(0)].caption as advert_caption,
+        realestate.visibility as advert_visibility,
         seo.url as advert_url,
-        realEstate.advertiser.agency.displayName as advert_agency_name,
-        
+        realestate.advertiser.agency.displayname as advert_agency_name,
+
+        case
+            when realestate.advertiser.agency.label = 'Impresa Edile' then 'construction_company'
+            when realestate.advertiser.agency.label = 'agenzia' then 'realestate_agency'
+            else 'n/a'
+        end as advert_agency_type,
+
         -- numerics 
-        realEstate.price.value as advert_price,
-        
+        realestate.price.value as advert_price,
+
         -- booleans 
-        realEstate.isProjectLike as flag_project, -- some adverts are projects links which include more than one advert
-        realEstate.advertiser.agency.label as advert_agency_flag,
+        -- some adverts are projects links which include more than one advert
+        realestate.isprojectlike as advert_is_project,
 
         -- dates 
-        ingestion_date as ingestion_date,
-        
+        ingestion_date as advert_ingestion_date
+
         --timestamps
-    
+
     from source
-    )
-    select *
-    from renamed
+)
+
+select * from renamed

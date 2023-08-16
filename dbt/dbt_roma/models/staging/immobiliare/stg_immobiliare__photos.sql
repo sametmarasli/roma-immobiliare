@@ -1,14 +1,19 @@
-with 
+with
 source as (
-    select * from {{ source('immobiliare', 'table_test_dbt') }}
-), 
+    select *
+    from {{ ref('base_immobiliare__selling_adverts') }}
+),
+
 renamed as (
-    SELECT 
+    select
         advert_id,
         photos_unnested.id as fotos_id,
         photos_unnested.urls.small as photos_url,
-        photos_unnested.caption as photos_caption,
-    FROM source 
-    CROSS JOIN UNNEST(realEstate.properties [SAFE_OFFSET(0)].multimedia.photos) AS photos_unnested
+        photos_unnested.caption as photos_caption
+    from source
+    cross join
+        unnest(realestate.properties[safe_offset(0)].multimedia.photos)
+            as photos_unnested
 )
+
 select * from renamed

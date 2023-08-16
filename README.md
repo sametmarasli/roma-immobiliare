@@ -22,5 +22,11 @@ todo:
 12.08
 - There is no way to filter auctions by url arguments
 - Started to build real estate properties model
+
 14.08
 - Finished preparing stage models, still need to be casted to correct types and add tests
+
+16.08
+- adverts table: profile, cast types, map values
+- setup sql fluff for sql linting
+- todo: filter out project adverts since they need further transformations
