@@ -1,5 +1,3 @@
-{{ config( materialized='table') }}
-
 with
 
 source as (
@@ -10,7 +8,7 @@ source as (
 renamed as (
     select
         -- ids
-        advert_id as advert_id,
+        advert_id,
         cast(realestate.id as string) as advert_immobiliare_id,
 
         -- strings 
@@ -33,12 +31,13 @@ renamed as (
 
         -- booleans 
         -- some adverts are projects links which include more than one advert
-        realestate.isprojectlike as advert_is_project,
+        cast(realestate.isprojectlike as bool)as advert_is_project,
 
         -- dates 
-        ingestion_date as advert_ingestion_date
+        FORMAT_TIMESTAMP('%Y-%m-%d', cast(PARSE_TIMESTAMP('%Y-%m-%d %H:%M:%S', ingestion_date) AS DATETIME)) as advert_ingestion_date,
 
         --timestamps
+        cast(PARSE_TIMESTAMP('%Y-%m-%d %H:%M:%S', ingestion_date) AS DATETIME) as advert_ingestion_date_time,
 
     from source
 )

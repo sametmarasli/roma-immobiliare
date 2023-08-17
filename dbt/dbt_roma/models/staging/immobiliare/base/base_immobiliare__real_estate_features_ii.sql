@@ -6,9 +6,9 @@ with source as (
 renamed as (
     select
         advert_id,
-        re_features
+        lower(realestate_features) as realestate_features
     from source
-    cross join unnest(realestate.properties[safe_offset(0)].features) as re_features
+    cross join unnest(realestate.properties[safe_offset(0)].features) as realestate_features
 )
 
 select *

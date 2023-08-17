@@ -10,8 +10,18 @@ renamed as (
         advert_id,
 
         -- strings 
-        realestate.properties[safe_offset(0)].condition as realestate_condition_i,
-        realestate.properties[safe_offset(0)].ga4condition as realestate_condition_ii,
+    
+        case
+            when realestate.properties[safe_offset(0)].condition = "Buono / Abitabile" then 'fine'
+            when realestate.properties[safe_offset(0)].condition = "Ottimo / Ristrutturato" then 'good'
+            when realestate.properties[safe_offset(0)].condition = "Nuovo / In costruzione" then 'new'
+            when realestate.properties[safe_offset(0)].condition = "Da ristrutturare" then 'poor'
+            else 'unknown'
+        end as realestate_condition,
+
+    
+    
+        -- realestate.properties[safe_offset(0)].ga4condition as realestate_condition_ii, -- not necessary
         realestate.properties[safe_offset(0)].typologyga4translation as realestate_type_i,
         realestate.typology.name as realestate_type_ii,
         realestate.properties[safe_offset(0)].category.name as realestate_category,
@@ -20,7 +30,7 @@ renamed as (
         realestate.properties[safe_offset(0)].location.city as realestate_city,
         realestate.properties[safe_offset(0)].location.province as realestate_province,
         realestate.properties[safe_offset(0)].location.region as realestate_region,
-
+        seo.url as advert_url,
         -- numerics 
         realestate.properties[safe_offset(0)].bathrooms as realestate_number_of_bathrooms,
         realestate.properties[safe_offset(0)].bedroomsnumber as realestate_number_of_bedrooms,

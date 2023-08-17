@@ -29,4 +29,8 @@ todo:
 16.08
 - adverts table: profile, cast types, map values
 - setup sql fluff for sql linting
-- todo: filter out project adverts since they need further transformations
+
+17.08
+- features, photos, and properties models: profile, cast types, map values
+- filter out project adverts since they need further transformations
+- setup pandas profiler
