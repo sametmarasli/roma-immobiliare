@@ -34,3 +34,8 @@ todo:
 - features, photos, and properties models: profile, cast types, map values
 - filter out project adverts since they need further transformations
 - setup pandas profiler
+
+18.08
+- finished transformin the stg models
+- wrote a macro to manipulate surface area value
+- todo: write intermadiate models (aggregations) which will be input for the mart models.
