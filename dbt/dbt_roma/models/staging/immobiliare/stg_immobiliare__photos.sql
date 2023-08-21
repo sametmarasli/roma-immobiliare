@@ -7,15 +7,17 @@ source as (
 renamed as (
     select
         -- ids
-        CONCAT(advert_id, '_', photos_unnested.id) AS photo_id,
+        concat(advert_id, '_', photos_unnested.id) as photo_id,
+        {{ create_realestate_id('seo.url') }} as realestate_id,
         advert_id,
         photos_unnested.id as photos_immobiliare_id,
+
         -- strings 
         photos_unnested.urls.small as photos_url,
-        NULLIF(photos_unnested.caption,'') as photos_caption
+        nullif(photos_unnested.caption, '') as photos_caption
+
         -- numerics 
         -- booleans 
-        -- some adverts are projects links which include more than one advert
         -- dates 
         --timestamps
 

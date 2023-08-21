@@ -14,5 +14,6 @@ concatenated_features as (
     select * from source_2
 )
 
+
 select distinct *
 from concatenated_features

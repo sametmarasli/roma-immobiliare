@@ -7,6 +7,7 @@ with source as (
 renamed as (
     select
         -- ids
+        {{ create_realestate_id('seo.url') }} as realestate_id,
         advert_id,
 
         -- strings 

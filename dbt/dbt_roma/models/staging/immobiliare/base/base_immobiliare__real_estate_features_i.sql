@@ -5,6 +5,7 @@ with source as (
 
 renamed as (
     select
+        {{ create_realestate_id('seo.url') }} as realestate_id,
         advert_id,
         lower(realestate_features) as realestate_features
     from source

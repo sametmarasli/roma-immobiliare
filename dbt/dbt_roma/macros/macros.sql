@@ -5,3 +5,8 @@
             ,'n/a')
         as int)
 {% endmacro %}
+
+
+{% macro create_realestate_id(column_name) %}
+    CAST( split({{ column_name }}, '/')[4] as string)
+{% endmacro %}

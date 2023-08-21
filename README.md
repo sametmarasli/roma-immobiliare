@@ -39,3 +39,6 @@ todo:
 - finished transformin the stg models
 - wrote a macro to manipulate surface area value
 - todo: write intermadiate models (aggregations) which will be input for the mart models.
+
+21.08
+- created the real_estates mart model
