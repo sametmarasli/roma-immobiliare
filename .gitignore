@@ -4,6 +4,7 @@ __pycache__/
 data
 config
 *.pyc 
+tutorial/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -42,3 +42,6 @@ todo:
 
 21.08
 - created the real_estates mart model
+
+23.08
+- added dash component for reporting
