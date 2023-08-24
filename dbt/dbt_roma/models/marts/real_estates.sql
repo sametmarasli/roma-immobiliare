@@ -1,35 +1,39 @@
-with 
+with
 
 realestate_properties as (
     select *
     from {{ ref('stg_immobiliare__real_estate_properties') }}
 
 ),
+
 adverts as (
     select *
     from {{ ref('stg_immobiliare__adverts') }}
 
 ),
+
 photos_by_realestate as (
     select
         realestate_id,
-        count(photo_id) as number_of_photos,
+        count(photo_id) as number_of_photos
     from {{ ref('stg_immobiliare__photos') }}
     group by 1
 ),
+
 features_by_realestate as (
     select
         realestate_id,
-        count(realestate_features) as number_of_features,
+        count(realestate_features) as number_of_features
     from {{ ref('stg_immobiliare__real_estate_features') }}
     group by 1
 ),
+
 realestate_properties_and_adverts_joined as (
 
-    select        
+    select
         -- ids
         realestate_properties.realestate_id,
-        
+
         -- strings 
         realestate_properties.realestate_condition,
         realestate_properties.realestate_type,
@@ -51,15 +55,15 @@ realestate_properties_and_adverts_joined as (
 
         -- booleans 
         -- dates
-        adverts.advert_date,
+        adverts.advert_date
         --timestamps
 
     from realestate_properties
-    
-    left join adverts on realestate_properties.realestate_id = adverts.realestate_id
-    left join photos_by_realestate on realestate_properties.realestate_id = photos_by_realestate.realestate_id    
-    left join features_by_realestate on realestate_properties.realestate_id = features_by_realestate.realestate_id    
-    )
 
-select * 
+    left join adverts on realestate_properties.realestate_id = adverts.realestate_id
+    left join photos_by_realestate on realestate_properties.realestate_id = photos_by_realestate.realestate_id
+    left join features_by_realestate on realestate_properties.realestate_id = features_by_realestate.realestate_id
+)
+
+select *
 from realestate_properties_and_adverts_joined
