@@ -3,9 +3,9 @@ version: 2
 sources:
     - name: immobiliare
       database: roma-immobiliare-395210
-      schema: dwh_test_dbt
+      schema: dwh_test_0409
       tables:
-        - name: table_test_dbt
+        - name: table_test_0409
 
          # freshness:
            # error_after: {count: 6, period: hour}

@@ -40,7 +40,7 @@ class ApiPagination:
     
     def serialize_paginated_results(self, 
                 parameters: ApiParameters,
-                ) -> bytes :
+                ) -> tuple[bytes, str] :
             '''
             '''    
             results, min_max_price_parameters = self.get_all_paginated_results(parameters)

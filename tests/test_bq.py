@@ -66,7 +66,7 @@ def test_ingest_json_from_gcs_to_bq(setup_bq_dataset_and_table,setup_gcs_bucket)
                                 project_id = tests.PROJECT_ID,
                                 dataset_id = tests.BQ_DATASET_ID_TEST, 
                                 table_id = tests.BQ_TABLE_ID_TEST,
-                                gcs_bucket_uri = tests.GCS_BUCKET_URI, 
+                                gcs_bucket_name = tests.GCS_BUCKET_NAME, 
                                 blob_path = 'test_bq/*', 
                                 bq_schema = tests.BQ_SCHEMA,
                                 location=tests.REGION

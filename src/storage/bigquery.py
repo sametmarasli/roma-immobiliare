@@ -75,7 +75,7 @@ class StorageBigQuery:
                                 project_id,
                                 dataset_id, 
                                 table_id,
-                                gcs_bucket_uri, 
+                                gcs_bucket_name, 
                                 blob_path, 
                                 bq_schema,
                                 location,
@@ -93,7 +93,7 @@ class StorageBigQuery:
         job_config.schema = schema
         job_config.autodetect = False
         
-        uri = f"{gcs_bucket_uri}{blob_path}"
+        uri = f"gs://{gcs_bucket_name}/{blob_path}"
 
         load_job = client.load_table_from_uri(
             source_uris=uri,
@@ -132,7 +132,7 @@ if __name__=="__main__":
     dataset_id = 'dwh_prova_0923',
     table_id = 'table_prova_0923_tmp')
     
-    big_query.ingest_data_to_bigquery(gcs_uri = 'gs://bucket_prova_0923/',
+    big_query.ingest_data_to_bigquery(gcs_uri = 'bucket_prova_0923',
                                      file_path='20230712/*')
     print('data_ingested')
 

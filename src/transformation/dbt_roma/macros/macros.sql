@@ -1,9 +1,9 @@
 {% macro tame_squaremeters(column_name) %}
-    CAST(
+    CAST(CAST(
         NULLIF(
                 split({{ column_name }}, ' ')[0]
             ,'n/a')
-        as int)
+        as FLOAT64) as INT64)
 {% endmacro %}
 
 

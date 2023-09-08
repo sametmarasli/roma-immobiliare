@@ -3,7 +3,7 @@ bckp
 __pycache__/
 data
 config
-*.pyc 
+*pyc
 tutorial/*
 
 # Byte-compiled / optimized / DLL files
