@@ -13,3 +13,4 @@ todo:
 - [ ] setup Dash for dashboard
 - [ ] move all the infra code to terraform
 
+![Alt text](./images/data%20pipeline.jpg?raw=true "Data Pipeline and Technologies")
