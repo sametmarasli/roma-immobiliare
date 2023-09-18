@@ -27,7 +27,11 @@ features_by_realestate as (
     from {{ ref('stg_immobiliare__real_estate_features') }}
     group by 1
 ),
-
+mapped_cities as (
+    select
+        *
+    from {{ ref('int_cities_mapped') }}
+),
 realestate_properties_and_adverts_joined as (
 
     select
@@ -38,6 +42,7 @@ realestate_properties_and_adverts_joined as (
         realestate_properties.realestate_condition,
         realestate_properties.realestate_type,
         realestate_properties.realestate_city,
+        mapped_cities.mapped_realestate_city,
         adverts.advert_agency_type,
         adverts.advert_visibility,
 
@@ -63,6 +68,7 @@ realestate_properties_and_adverts_joined as (
     left join adverts on realestate_properties.realestate_id = adverts.realestate_id
     left join photos_by_realestate on realestate_properties.realestate_id = photos_by_realestate.realestate_id
     left join features_by_realestate on realestate_properties.realestate_id = features_by_realestate.realestate_id
+    left join mapped_cities on realestate_properties.realestate_id = mapped_cities.realestate_id
 )
 
 select *

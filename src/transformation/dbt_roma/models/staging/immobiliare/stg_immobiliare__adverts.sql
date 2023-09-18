@@ -35,7 +35,7 @@ renamed as (
         cast(realestate.isprojectlike as bool) as advert_is_project,
 
         -- dates 
-        format_timestamp('%Y-%m-%d', cast(parse_timestamp('%Y-%m-%d %H:%M:%S', ingestion_date) as datetime))
+        DATE(format_timestamp('%Y-%m-%d', cast(parse_timestamp('%Y-%m-%d %H:%M:%S', ingestion_date) as datetime)))
             as advert_date,
 
         --timestamps

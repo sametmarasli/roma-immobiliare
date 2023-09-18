@@ -1,0 +1,20 @@
+models:
+  - name: real_estates
+    columns:  
+      - name: realestate_id
+      - name: realestate_condition
+      - name: realestate_type
+      - name: realestate_city
+      - name: advert_agency_type
+      - name: advert_visibility
+      - name: realestate_number_of_bathrooms
+      - name: realestate_number_of_bedrooms
+      - name: realestate_number_of_rooms
+      - name: realestate_floor
+      - name: realestate_surface_squaremeter
+      - name: realestate_latitude
+      - name: realestate_longitude
+      - name: number_of_photos
+      - name: number_of_features
+      - name: advert_price
+      - name: advert_date

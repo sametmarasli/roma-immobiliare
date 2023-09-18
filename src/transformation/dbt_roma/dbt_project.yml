@@ -34,8 +34,8 @@ models:
   dbt_roma:
     # Config indicated by + and applies to all files under models/example/
     staging:
-      +materialized: table
+      +materialized: view
     intermediate:
-      +materialized: table
+      +materialized: view
     marts:
       +materialized: table

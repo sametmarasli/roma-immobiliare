@@ -1,7 +1,7 @@
 with
 source as (
     select *
-    from {{ ref('real_estates') }}
+    from {{ ref('stg_immobiliare__real_estate_properties') }}
 ),
 
 cityhousecounts as (
@@ -18,7 +18,7 @@ citymapping as (
     select
         realestate_city,
         case
-            when realestate_city_count >= 5 then realestate_city
+            when realestate_city_count >= 20 then realestate_city
             else 'Other'
         end as mapped_realestate_city
     from
@@ -27,7 +27,7 @@ citymapping as (
 
 meanpricebycity as (
     select
-        source.*,
+        source.realestate_id,
         citymapping.mapped_realestate_city
     from
         source

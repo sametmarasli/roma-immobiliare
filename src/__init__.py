@@ -39,7 +39,21 @@ def remove_gcs_bucket():
     gcs = StorageGCS(GCP_SERVICE_ACCOUNT_PATH)
     gcs.delete_bucket(bucket_name=GCS_BUCKET_NAME, force=True)
 
+def setup_bq_dataset(dataset_id):
+    big_query = StorageBigQuery(GCP_SERVICE_ACCOUNT_PATH)
+    print(f'LOG: Setup ... BQ Dataset: {dataset_id}')
+    big_query.create_dataset(
+        project_id=PROJECT_ID,
+        dataset_id=dataset_id,
+        location=REGION)
 
+def remove_bq_dataset(dataset_id):
+    big_query = StorageBigQuery(GCP_SERVICE_ACCOUNT_PATH)
+    print(f'LOG: Deleting ... BQ Table {dataset_id}')
+    big_query.delete_dataset(
+        project_id=PROJECT_ID,
+        dataset_id=dataset_id)
+    
 def setup_bq_dataset_and_table():
     assert BQ_DATASET_ID, 'Cannot setup dataset without id, check env variables'
     assert BQ_TABLE_ID, 'Cannot setup table without id, check env variables'
