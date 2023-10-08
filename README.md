@@ -1,6 +1,7 @@
 # Monitoring Rome House Prices with Cloud Technologies
 This project aims to create a data pipeline to monitor house prices in Rome by using data from immobiliare.it. 
-We use Google cloud tools (Bigquery, GCS, GCE, Cloud Run, Data(looker) studio ...), ,Prefect for orchestration, dbt for data transformations, Terraform for infrastructure, Docker and Python. The data is scraped from immobiliare.it.
+We use Google cloud tools (Bigquery, GCS, GCE, Cloud Run ..),Prefect for orchestration, dbt for data transformations, Terraform for infrastructure, Dash for reporting, Docker and Python. 
+The data scraped from immobiliare.it.
 
 todo:
 - [x] reorganize the repo for a valid structure for Prefect
