@@ -1,6 +1,5 @@
 include config/.env.test
 
-
 export_environment_variables:
 	export $(cat config/.env.test|xargs)
 

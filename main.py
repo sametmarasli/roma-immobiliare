@@ -1,68 +1,86 @@
+import src.logger as log
+from src import pipeline_manager 
+from src import gcp_manager
 from datetime import date
-from prefect import flow, task
-import logging
+import os 
+from dotenv import load_dotenv
+# from dag import immobiliare_data_ingestion
+load_dotenv(dotenv_path='config/.env.test')
+# export $(cat config/.env.test|xargs)
 
-from src import (
-                bulk_call_api_and_extract_data_to_gcs,
-                ingest_data_from_gcs_to_bq_by_date,
-                run_dbt
-                )
+ENV_NAME = os.environ['ENV_NAME']
+GCS_BUCKET_NAME = os.environ['GCS_BUCKET_NAME']
+GCP_SERVICE_ACCOUNT_PATH = os.environ['GCP_SERVICE_ACCOUNT_PATH']
+PROJECT_ID = os.environ['PROJECT_ID']
+REGION = os.environ['REGION']
+BQ_RAW_DATASET_ID = os.environ['BQ_RAW_DATASET_ID']
+BQ_RAW_TABLE_ID = os.environ['BQ_RAW_TABLE_ID']
+BQ_DBT_DATASET_ID = os.environ['BQ_DBT_DATASET_ID']
+BQ_RAW_SCHEMA = os.environ['BQ_RAW_SCHEMA']
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
-logger = logging.getLogger(__name__)
 
-@task()
-def task_bulk_call_api_and_extract_data_to_gcs(ingestion_date: str, minimum_price: int, maxium_price: int) -> None:
-    """
-    Calls an API and extracts data to Google Cloud Storage (GCS).
+if __name__ ==  "__main__": 
+    log.info(f"Environment: {ENV_NAME}")
 
-    Args:
-        ingestion_date (str): The date for data ingestion.
-        minimum_price (int): The minimum price filter.
-        maxium_price (int): The maximum price filter.
-    """
-    logger.info("Running task_bulk_call_api_and_extract_data_to_gcs")
-    bulk_call_api_and_extract_data_to_gcs(ingestion_date, minimum_price, maxium_price)
+    # gcp_manager.teardown_data_infrastructure(  
+    #     service_account=GCP_SERVICE_ACCOUNT_PATH,
+    #     project_id=PROJECT_ID,
+    #     gcs_bucket_name=GCS_BUCKET_NAME,
+    #     bq_raw_dataset_id=BQ_RAW_DATASET_ID,
+    #     bq_dbt_dataset_id=BQ_DBT_DATASET_ID
+    #     )
 
-@task()
-def task_ingest_data_from_gcs_to_bq_by_date(ingestion_date: str) -> None:
-    """
-    Ingests data from Google Cloud Storage (GCS) to BigQuery (BQ) for a specific date.
+    # gcp_manager.setup_data_infrastructure( 
+    #     service_account=GCP_SERVICE_ACCOUNT_PATH,
+    #     location=REGION,
+    #     project_id=PROJECT_ID,
+    #     gcs_bucket_name=GCS_BUCKET_NAME,
+    #     bq_raw_dataset_id=BQ_RAW_DATASET_ID,
+    #     bq_dbt_dataset_id=BQ_DBT_DATASET_ID
+    #     )
 
-    Args:
-        ingestion_date (str): The date for data ingestion.
-    """
-    logger.info("Running task_ingest_data_from_gcs_to_bq_by_date")
-    ingest_data_from_gcs_to_bq_by_date(ingestion_date)
+    # immobiliare_data_ingestion.trigger_pipeline(
+    #     ingestion_date=str(date.today()), 
+    #     minimum_price=200_000,
+    #     maxium_price=222_000,
+    #     service_account=GCP_SERVICE_ACCOUNT_PATH,
+    #     project_id=PROJECT_ID,
+    #     location=REGION,
+    #     gcs_bucket_name=GCS_BUCKET_NAME,
+    #     dataset_id=BQ_RAW_DATASET_ID,
+    #     table_id=BQ_RAW_TABLE_ID,
+    #     bq_schema=BQ_RAW_SCHEMA
+    #     )
+    
+    
+    # pipeline_manager.bulk_call_api_and_extract_data_to_gcs(
+    #                     gcs_bucket_name=GCS_BUCKET_NAME,
+    #                     service_account=GCP_SERVICE_ACCOUNT_PATH,
+    #                     ingestion_date=str(date.today()),
+    #                     minimum_price=220_000,
+    #                     maxium_price= 222_000
+    #                     )
 
-@task()
-def task_run_dbt() -> None:
-    """
-    Runs a dbt (data build tool) job.
-    """
-    logger.info("Running task_run_dbt")
-    run_dbt()
 
-@flow()
-def trigger_pipeline(ingestion_date: str, minimum_price: int, maxium_price: int) -> None:
-    """
-    Triggers a data pipeline for data extraction, ingestion, and transformation.
 
-    Args:
-        ingestion_date (str): The date for data ingestion.
-        minimum_price (int): The minimum price filter.
-        maxium_price (int): The maximum price filter.
-    """
-    logger.info("Triggering pipeline")
-    task_bulk_call_api_and_extract_data_to_gcs(ingestion_date, minimum_price, maxium_price)
-    task_ingest_data_from_gcs_to_bq_by_date(ingestion_date)
-    task_run_dbt()
+    pipeline_manager.ingest_data_from_gcs_to_bq_by_date(
+            ingestion_date='2023-10-05',
+            service_account=GCP_SERVICE_ACCOUNT_PATH,
+            gcs_bucket_name=GCS_BUCKET_NAME,
+            location=REGION,
+            project_id=PROJECT_ID,
+            dataset_id=BQ_RAW_DATASET_ID,
+            table_id=BQ_RAW_TABLE_ID,
+            bq_schema=BQ_RAW_SCHEMA,
+            )
 
-if __name__ == '__main__':
-    logger.info("Starting the main script")
-    trigger_pipeline(ingestion_date=str(date.today()), minimum_price=390_000, maxium_price=400_000)
-    logger.info("Script execution completed")
+
+
+    pipeline_manager.run_dbt()
+
+    # pipeline_manager.remove_temporary_raw_bigquery_table(
+    #     service_account=GCP_SERVICE_ACCOUNT_PATH,
+    #     project_id=PROJECT_ID,
+    #     dataset_id=BQ_RAW_DATASET_ID,
+    #     table_id=BQ_RAW_TABLE_ID
+    # )

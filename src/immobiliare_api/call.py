@@ -2,7 +2,7 @@ import requests
 from dataclasses import asdict
 from datetime import datetime
 
-from src.models import ApiParameters, ApiResponse
+from src.immobiliare_api.models import ApiParameters, ApiResponse
 
 
 class ImmobiliareApi:

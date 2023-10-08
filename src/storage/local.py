@@ -5,10 +5,6 @@ from typing import List,Union
 from dataclasses import asdict
 import os 
 
-from src.models import ApiParameters, AdvertSchema
-
-
-
 class StorageLocal:
     '''
     '''

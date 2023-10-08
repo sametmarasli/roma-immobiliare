@@ -1,11 +1,9 @@
 from src.storage.gcs import StorageGCS
-from src.storage.local import StorageLocal
-from src.api.pagination import ApiPagination
-from src.models import ApiParameters
+from src.immobiliare_api.pagination import ApiPagination
+from src.immobiliare_api.models import ApiParameters
 import tests
 
 import pytest
-import json 
 
 @pytest.fixture
 def delete_gcs_bucket():
@@ -31,9 +29,7 @@ def setup_gcs_bucket():
 @pytest.fixture
 def setup_data_on_memory():
     print('LOG: Setup ...')
-    parameters = ApiParameters(prezzoMinimo=300_000,prezzoMassimo=300_050)
-    api = ApiPagination()
-    json_results, json_file_name = api.serialize_paginated_results(parameters)
+    json_results, json_file_name = 'test_json', 'test_file_name'
     yield json_results, json_file_name
     print('LOG: Teardown...')
     

@@ -1,8 +1,8 @@
 from src.storage.bigquery import StorageBigQuery
 from src.storage.gcs import StorageGCS
 from src.storage.local import StorageLocal
-from src.api.pagination import ApiPagination
-from src.models import ApiParameters
+from src.immobiliare_api.pagination import ApiPagination
+from src.immobiliare_api.models import ApiParameters
 
 from pathlib import Path
 import os 
@@ -13,14 +13,16 @@ import tests
 @pytest.fixture
 def setup_gcs_bucket():
     print('LOG: Setup ... setup_gcs_bucket')
+    # create bucket
     gcs = StorageGCS(tests.GCP_SERVICE_ACCOUNT_PATH)
-    api = ApiPagination()
     try:
         gcs.delete_bucket(bucket_name=tests.GCS_BUCKET_NAME, force=True)
     except: 
         pass
     gcs.create_bucket(bucket_name=tests.GCS_BUCKET_NAME, location=tests.REGION)
-
+    
+    # download mock data and ingest to gcs
+    api = ApiPagination()
     parameters = ApiParameters(prezzoMinimo=100_000,prezzoMassimo=100_050)
     json_results, json_file_name = api.serialize_paginated_results(parameters)
     gcs.upload_blob_from_memory(
@@ -38,22 +40,22 @@ def setup_bq_dataset_and_table():
     big_query = StorageBigQuery(tests.GCP_SERVICE_ACCOUNT_PATH)
     big_query.create_dataset(
         project_id=tests.PROJECT_ID,
-        dataset_id=tests.BQ_DATASET_ID_TEST,
+        dataset_id=tests.BQ_DATASET_ID,
         location=tests.REGION)
     big_query.create_table(
         project_id=tests.PROJECT_ID,
-        dataset_id=tests.BQ_DATASET_ID_TEST,
-        table_id=tests.BQ_TABLE_ID_TEST,
+        dataset_id=tests.BQ_DATASET_ID,
+        table_id=tests.BQ_TABLE_ID,
         bq_schema=tests.BQ_SCHEMA)
     yield
     print('LOG: Teardown... setup_bq_dataset_and_table')
     big_query.delete_table(
         project_id=tests.PROJECT_ID,
-        dataset_id=tests.BQ_DATASET_ID_TEST,
-        table_id=tests.BQ_TABLE_ID_TEST,)
+        dataset_id=tests.BQ_DATASET_ID,
+        table_id=tests.BQ_TABLE_ID,)
     big_query.delete_dataset(
         project_id=tests.PROJECT_ID,
-        dataset_id=tests.BQ_DATASET_ID_TEST,)
+        dataset_id=tests.BQ_DATASET_ID,)
 
 
 
@@ -64,8 +66,8 @@ def test_ingest_json_from_gcs_to_bq(setup_bq_dataset_and_table,setup_gcs_bucket)
     big_query = StorageBigQuery(tests.GCP_SERVICE_ACCOUNT_PATH)
     big_query.ingest_data_to_bigquery_from_gcs(
                                 project_id = tests.PROJECT_ID,
-                                dataset_id = tests.BQ_DATASET_ID_TEST, 
-                                table_id = tests.BQ_TABLE_ID_TEST,
+                                dataset_id = tests.BQ_DATASET_ID, 
+                                table_id = tests.BQ_TABLE_ID,
                                 gcs_bucket_name = tests.GCS_BUCKET_NAME, 
                                 blob_path = 'test_bq/*', 
                                 bq_schema = tests.BQ_SCHEMA,

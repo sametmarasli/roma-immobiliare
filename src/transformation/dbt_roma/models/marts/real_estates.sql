@@ -36,6 +36,7 @@ realestate_properties_and_adverts_joined as (
 
     select
         -- ids
+        CONCAT(CAST(adverts.advert_date AS STRING), '_', realestate_properties.realestate_id) AS advert_id,
         realestate_properties.realestate_id,
 
         -- strings 

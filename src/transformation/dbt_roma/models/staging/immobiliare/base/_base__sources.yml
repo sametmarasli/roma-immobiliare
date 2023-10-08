@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+    - name: immobiliare
+      database: "{{ env_var('PROJECT_ID') }}"
+      schema: "{{ env_var('BQ_RAW_DATASET_ID') }}"
+      tables:
+        - name: raw_immobiliare
+
+         # freshness:
+           # error_after: {count: 6, period: hours

@@ -1,7 +1,7 @@
 from typing import List
 import uuid
-from src.api.call import ImmobiliareApi
-from src.models import ApiParameters, ApiResponse, AdvertSchema
+from src.immobiliare_api.call import ImmobiliareApi
+from src.immobiliare_api.models import ApiParameters, ApiResponse, AdvertSchema
 import json
 from dataclasses import asdict
 

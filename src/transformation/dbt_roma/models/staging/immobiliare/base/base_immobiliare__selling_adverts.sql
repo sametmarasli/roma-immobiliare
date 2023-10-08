@@ -1,6 +1,6 @@
 with selling_adverts as (
     select *
-    from {{ source('immobiliare', 'table_test_0409') }}
+    from {{ source('immobiliare', 'raw_immobiliare') }}
     where (realestate.type = 'ad') and (realestate.isprojectlike = 'false')
 )
 

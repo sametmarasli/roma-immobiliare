@@ -1,5 +1,5 @@
-from src.api.pagination import ApiPagination
-from src.models import ApiParameters
+from src.immobiliare_api.pagination import ApiPagination
+from src.immobiliare_api.models import ApiParameters
 
 import tests
 import pytest
